@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<extension key="com.jasontdc.grouptreeview" type="module">
+  <file>grouptreeview</file>
+  <name>Group TreeView</name>
+  <description>A CiviCRM extension that provides a TreeView for browsing groups and contacts.</description>
+  <license>MIT</license>
+  <maintainer>
+    <author>Jason Davies</author>
+    <email>jasontdc@gmail.com</email>
+  </maintainer>
+  <urls>
+    <url desc="Main Extension Page">https://github.com/jasontdc/com.jasontdc.grouptreeview</url>
+    <url desc="Documentation">https://github.com/jasontdc/com.jasontdc.grouptreeview/README.md</url>
+    <url desc="Support">https://github.com/jasontdc/com.jasontdc.grouptreeview</url>
+    <url desc="Licensing">http://opensource.org/licenses/MIT</url>
+  </urls>
+  <releaseDate>2017-05-23</releaseDate>
+  <version>1.0</version>
+  <develStage>alpha</develStage>
+  <compatibility>
+    <ver>4.2</ver>
+  </compatibility>
+  <comments>This is a new, undeveloped module</comments>
+  <civix>
+    <namespace>CRM/Grouptreeview</namespace>
+  </civix>
+</extension>
