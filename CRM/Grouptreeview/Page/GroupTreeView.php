@@ -38,11 +38,15 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
         $contacts = civicrm_api3('Contact', 'get', array(
           'sequential' => 1,
           'group' => $groupid,
-          'return' => array('id', 'contact_type', 'display_name', 'phone', 'email'),
+          'return' => array('id', 'contact_type', 'display_name', 'phone', 'email', 'custom_185'), //get the custom field
         ));
         if($contacts['is_error'] == 0 && $contacts['count'] > 0) {
           foreach($contacts['values'] as $contact) {
             $contact_text = implode(' - ', array_filter(array($contact['display_name'], $contact['phone'], $contact['email'])));
+            //add the contents of the custom field on a new line if present
+            if($contact['custom_185']) {
+              $contact_text .= '<br/><em>' . $contact['custom_185'] . '</em>';
+            }
             array_push($data, array(
               'id' => "contact-$groupid-" . $contact['id'],
               'type' => $contact['contact_type'],
