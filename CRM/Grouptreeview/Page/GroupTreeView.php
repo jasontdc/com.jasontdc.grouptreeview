@@ -75,6 +75,7 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
       //if using Drupal, the jQuery Update module must be used, or some other method of upgrading jQuery must be used
       CRM_Core_Resources::singleton()->addStyleUrl('//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/themes/default/style.min.css');
       CRM_Core_Resources::singleton()->addScriptUrl('//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js');
+      CRM_Core_Resources::singleton()->addStyleFile('com.jasontdc.grouptreeview', 'grouptreeview.css');
       CRM_Core_Resources::singleton()->addScriptFile('com.jasontdc.grouptreeview', 'grouptreeview.js');
 
       $title = "Groups";
