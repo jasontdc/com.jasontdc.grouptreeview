@@ -22,6 +22,7 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
         $groups = civicrm_api3('Group', 'get', array(
           'sequential' => 1,
           'parents' => array('LIKE' => "%$groupid%"), $groupid,
+          'return' => array('id', 'title', 'description'),
         ));
         if($groups['is_error'] == 0 && $groups['count'] > 0) {
           foreach($groups['values'] as $group) {
@@ -37,6 +38,7 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
         $contacts = civicrm_api3('Contact', 'get', array(
           'sequential' => 1,
           'group' => $groupid,
+          'return' => array('id', 'contact_type', 'display_name', 'phone', 'email'),
         ));
         if($contacts['is_error'] == 0 && $contacts['count'] > 0) {
           foreach($contacts['values'] as $contact) {
@@ -54,6 +56,7 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
       } else {
         $groups = civicrm_api3('Group', 'get', array(
           'sequential' => 1,
+          'return' => array('id', 'title', 'description'),
         ));
         if($groups['is_error'] == 0 && $groups['count'] > 0) {
           foreach($groups['values'] as $group) {
@@ -85,6 +88,7 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
           $group = civicrm_api3('Group', 'getsingle', array(
             'sequential' => 1,
             'id' => $filter,
+            'return' => array('id', 'title'),
           ));
           if($group['id'] == $filter) {
             $title = $group['title'];
