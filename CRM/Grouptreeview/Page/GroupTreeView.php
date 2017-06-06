@@ -42,10 +42,11 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
         ));
         if($contacts['is_error'] == 0 && $contacts['count'] > 0) {
           foreach($contacts['values'] as $contact) {
+            $contact_text = implode(' - ', array_filter(array($contact['display_name'], $contact['phone'], $contact['email'])));
             array_push($data, array(
               'id' => "contact-$groupid-" . $contact['id'],
               'type' => $contact['contact_type'],
-              'text' => implode(' - ', array_filter(array($contact['display_name'], $contact['phone'], $contact['email']))),
+              'text' => $contact_text,
               'a_attr' => array(
                 'href' => CRM_Utils_System::url('civicrm/contact/view', "reset=1&cid=" . $contact['id']),
                 'class' => 'contact-link'
@@ -61,9 +62,10 @@ class CRM_Grouptreeview_Page_GroupTreeView extends CRM_Core_Page {
         if($groups['is_error'] == 0 && $groups['count'] > 0) {
           foreach($groups['values'] as $group) {
             if(!isset($group['parents'])) {
+              $group_text = implode(" - ", array_filter(array($group['title'],$group['description'])));
               array_push($data, array(
                 'id' => "0-" . $group['id'],
-                'text' => implode(" - ", array_filter(array($group['title'],$group['description']))),
+                'text' => $group_text,
                 'type' => 'Group',
                 'children' => true
               ));
